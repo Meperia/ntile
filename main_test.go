@@ -109,3 +109,11 @@ func TestNtile(t *testing.T) {
 		t.Error()
 	}
 }
+
+func BenchmarkNtileAt(b *testing.B) {
+	var xs = make([]interface{}, b.N)
+	for i := 0; i < b.N; i++ {
+		xs[i] = i
+	}
+	ntile.NtileAt(xs, 5000, 5000)
+}
